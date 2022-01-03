@@ -149,6 +149,11 @@ const boxMaterial = new THREE.MeshBasicMaterial({ color: 0xe6b98c });
 const box = new THREE.Mesh(boxGeometry, boxMaterial);
 scene.add(box);
 
+const lockGeometry = new THREE.BoxGeometry(1, 1, 1);
+const lockMaterial = new THREE.MeshBasicMaterial({ color: 0x96616b });
+const lock = new THREE.Mesh(lockGeometry, lockMaterial);
+scene.add(lock);
+
 
 camera.position.z = 35;
 
@@ -267,6 +272,11 @@ function animate() {
   box.position.x = -39;
   box.position.y = -9;
   box.position.z = -10;
+
+  lock.position.x = -31;
+  lock.position.y = -9;
+  lock.position.z = -10;
+  lock.rotation.y = -15.1;
 
   renderer.render(scene, camera);
 }
