@@ -9,7 +9,7 @@ document.body.appendChild(renderer.domElement);
 //Furnitures
 //Bed
 const mattressShape = new THREE.BoxGeometry(12, 3, 19);
-const mattressMaterial = new THREE.MeshBasicMaterial({ color: 0x6eb0b8 });
+const mattressMaterial = new THREE.MeshBasicMaterial({ color: 0xebebeb });
 const mattress = new THREE.Mesh(mattressShape, mattressMaterial);
 scene.add(mattress);
 
@@ -19,7 +19,7 @@ const bedFrame = new THREE.Mesh(frameShape, frameMaterial);
 scene.add(bedFrame);
 
 const blanketShape = new THREE.BoxGeometry(13, 1, 13);
-const blanketMaterial = new THREE.MeshBasicMaterial({ color: 0x37505c });
+const blanketMaterial = new THREE.MeshBasicMaterial({ color: 0x5aa9e6 });
 const blanket = new THREE.Mesh(blanketShape, blanketMaterial);
 scene.add(blanket);
 
@@ -84,14 +84,19 @@ const windowMaterial = new THREE.MeshBasicMaterial({ color: 0x34a8eb, side: THRE
 const roomWindow = new THREE.Mesh(windowPlane, windowMaterial);
 scene.add(roomWindow);
 
+const windowBeamGeometry = new THREE.CylinderGeometry(0.5, 0.5, 22, 20);
+const windowBeamMaterial = new THREE.MeshBasicMaterial({ color: 0x96616b });
+const windowBeam = new THREE.Mesh(windowBeamGeometry, windowBeamMaterial);
+scene.add(windowBeam);
+
 //Curtains
 const leftCurtainShape = new THREE.PlaneGeometry(4, 14);
-const leftCurtainMaterial = new THREE.MeshBasicMaterial({ color: 0xceb4e0, side: THREE.DoubleSide });
+const leftCurtainMaterial = new THREE.MeshBasicMaterial({ color: 0xffcfe0, side: THREE.DoubleSide });
 const leftCurtain = new THREE.Mesh(leftCurtainShape, leftCurtainMaterial);
 scene.add(leftCurtain);
 
 const rightCurtainShape = new THREE.PlaneGeometry(4, 14);
-const rightCurtainMaterial = new THREE.MeshBasicMaterial({ color: 0xceb4e0, side: THREE.DoubleSide });
+const rightCurtainMaterial = new THREE.MeshBasicMaterial({ color: 0xffcfe0, side: THREE.DoubleSide });
 const rightCurtain = new THREE.Mesh(rightCurtainShape, rightCurtainMaterial);
 scene.add(rightCurtain);
 
@@ -117,6 +122,32 @@ const notebookGeometry = new THREE.BoxGeometry(6, 1, 5);
 const notebookMaterial = new THREE.MeshBasicMaterial({ color: 0xff548a });
 const notebook = new THREE.Mesh(notebookGeometry, notebookMaterial);
 scene.add(notebook);
+
+//Other things/decorations
+const ballGeometry = new THREE.SphereGeometry(3, 32, 16);
+const ballMaterial = new THREE.MeshBasicMaterial({ color: 0xde9254 });
+const ball = new THREE.Mesh(ballGeometry, ballMaterial);
+scene.add(ball);
+
+const posterGeometry = new THREE.PlaneGeometry(7, 15);
+const posterMaterial = new THREE.MeshBasicMaterial({ color: 0xcb7ccc, side: THREE.DoubleSide });
+const poster = new THREE.Mesh(posterGeometry, posterMaterial);
+scene.add(poster);
+
+const secondPosterGeometry = new THREE.PlaneGeometry(3, 3);
+const secondPosterMaterial = new THREE.MeshBasicMaterial({ color: 0xe3c988, side: THREE.DoubleSide });
+const secondPoster = new THREE.Mesh(secondPosterGeometry, secondPosterMaterial);
+scene.add(secondPoster);
+
+const thirdPosterGeometry = new THREE.PlaneGeometry(12, 16);
+const thirdPosterMaterial = new THREE.MeshBasicMaterial({ color: 0x72b875, side: THREE.DoubleSide });
+const thirdPoster = new THREE.Mesh(thirdPosterGeometry, thirdPosterMaterial);
+scene.add(thirdPoster);
+
+const boxGeometry = new THREE.BoxGeometry(14, 10, 8);
+const boxMaterial = new THREE.MeshBasicMaterial({ color: 0xe6b98c });
+const box = new THREE.Mesh(boxGeometry, boxMaterial);
+scene.add(box);
 
 
 camera.position.z = 35;
@@ -166,17 +197,17 @@ function animate() {
   notebook.rotation.y = -0.2;
 
   //Potted Plant
-  pot.position.x = -4;
+  pot.position.x = -6;
   pot.position.y = -9;
-  pot.position.z = -8;
+  pot.position.z = -6;
 
-  stem.position.x = -4;
+  stem.position.x = -6;
   stem.position.y = -7;
-  stem.position.z = -8;
+  stem.position.z = -6;
 
-  tree.position.x = -4;
+  tree.position.x = -6;
   tree.position.y = -1;
-  tree.position.z = -8;
+  tree.position.z = -6;
 
   //Closet
   closet.position.x = -39;
@@ -191,6 +222,11 @@ function animate() {
   roomWindow.position.x = 10;
   roomWindow.position.y = 5;
   roomWindow.position.z = -10;
+
+  windowBeam.position.x = 10;
+  windowBeam.position.y = 11;
+  windowBeam.position.z = -10;
+  windowBeam.rotation.z = 11;
 
   leftCurtain.position.x = 2;
   leftCurtain.position.y = 5;
@@ -207,6 +243,30 @@ function animate() {
   floor.position.x = -5;
   floor.position.y = -17;
   floor.position.z = 0;
+
+  //Other things/decorations
+  ball.position.x = -12;
+  ball.position.y = -12;
+  ball.position.z = -3;
+
+
+  poster.position.x = 33;
+  poster.position.y = 4;
+  poster.position.z = 4;
+  poster.rotation.y = 30;
+
+  secondPoster.position.x = 32;
+  secondPoster.position.y = 11;
+  secondPoster.position.z = 8;
+  secondPoster.rotation.y = 30;
+
+  thirdPoster.position.x = 31;
+  thirdPoster.position.y = 4;
+  thirdPoster.position.z = -10;
+
+  box.position.x = -39;
+  box.position.y = -9;
+  box.position.z = -10;
 
   renderer.render(scene, camera);
 }
