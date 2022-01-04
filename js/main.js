@@ -88,7 +88,7 @@ scene.add(closetKnob);
 
 //Window
 const windowPlane = new THREE.PlaneGeometry(18, 13);
-const windowMaterial = new THREE.MeshBasicMaterial({ color: 0x34a8eb, side: THREE.DoubleSide });
+const windowMaterial = new THREE.MeshBasicMaterial({ color: 0x171942, side: THREE.DoubleSide });
 const roomWindow = new THREE.Mesh(windowPlane, windowMaterial);
 scene.add(roomWindow);
 
@@ -96,6 +96,11 @@ const windowBeamGeometry = new THREE.CylinderGeometry(0.5, 0.5, 22, 20);
 const windowBeamMaterial = new THREE.MeshBasicMaterial({ color: 0x96616b });
 const windowBeam = new THREE.Mesh(windowBeamGeometry, windowBeamMaterial);
 scene.add(windowBeam);
+
+const moonGeometry = new THREE.CircleGeometry(3, 32);
+const moonMaterial = new THREE.MeshBasicMaterial({ color: 0xedeff0 });
+const moon = new THREE.Mesh(moonGeometry, moonMaterial);
+scene.add(moon);
 
 //Curtains
 const curtainShape = new THREE.PlaneGeometry(4, 14);
@@ -135,17 +140,17 @@ const ball = new THREE.Mesh(ballGeometry, ballMaterial);
 scene.add(ball);
 
 const posterGeometry = new THREE.PlaneGeometry(7, 15);
-const posterMaterial = new THREE.MeshBasicMaterial({ color: 0xcb7ccc, side: THREE.DoubleSide });
+const posterMaterial = new THREE.MeshBasicMaterial({ color: 0xfd96ff, side: THREE.DoubleSide });
 const poster = new THREE.Mesh(posterGeometry, posterMaterial);
 scene.add(poster);
 
 const secondPosterGeometry = new THREE.PlaneGeometry(3, 3);
-const secondPosterMaterial = new THREE.MeshBasicMaterial({ color: 0xe3c988, side: THREE.DoubleSide });
+const secondPosterMaterial = new THREE.MeshBasicMaterial({ color: 0xffe299, side: THREE.DoubleSide });
 const secondPoster = new THREE.Mesh(secondPosterGeometry, secondPosterMaterial);
 scene.add(secondPoster);
 
 const thirdPosterGeometry = new THREE.PlaneGeometry(8, 10);
-const thirdPosterMaterial = new THREE.MeshBasicMaterial({ color: 0x72b875, side: THREE.DoubleSide });
+const thirdPosterMaterial = new THREE.MeshBasicMaterial({ color: 0x67d6ac, side: THREE.DoubleSide });
 const thirdPoster = new THREE.Mesh(thirdPosterGeometry, thirdPosterMaterial);
 scene.add(thirdPoster);
 
@@ -155,17 +160,17 @@ const box = new THREE.Mesh(boxGeometry, boxMaterial);
 scene.add(box);
 
 const lockGeometry = new THREE.BoxGeometry(1, 1, 1);
-const lockMaterial = new THREE.MeshBasicMaterial({ color: 0x96616b });
+const lockMaterial = new THREE.MeshBasicMaterial({ color: 0xd4d4d4 });
 const lock = new THREE.Mesh(lockGeometry, lockMaterial);
 scene.add(lock);
 
 const trashGeometry = new THREE.CylinderGeometry(3, 2, 6, 8);
-const trashMaterial = new THREE.MeshBasicMaterial({ color: 0x383838 });
+const trashMaterial = new THREE.MeshBasicMaterial({ color: 0x808080 });
 const trashCan = new THREE.Mesh(trashGeometry, trashMaterial);
 scene.add(trashCan);
 
 //Light
-const lightRimGeometry = new THREE.TorusGeometry(5, 1, 16, 100);
+const lightRimGeometry = new THREE.TorusGeometry(5.5, 1, 16, 100);
 const lightRim = new THREE.Mesh(lightRimGeometry, handleMaterial);
 scene.add(lightRim)
 
@@ -270,12 +275,16 @@ function animate() {
   rightCurtain.position.y = 5;
   rightCurtain.position.z = -9;
 
+  moon.position.x = 15;
+  moon.position.y = 8.5;
+  moon.position.z = -10;
+
+  //Rug
   rug.position.x = 1;
   rug.position.y = -15;
   rug.position.z = 0;
 
   //Floor and Ceiling
-
   floor.position.x = -5;
   floor.position.y = -17;
 
@@ -287,15 +296,14 @@ function animate() {
   lightRim.position.z = -10;
   lightRim.rotation.x = 17.5;
 
-
-  light.position.y = 32;
+  light.position.y = 32.5;
   light.position.z = -10;
+
 
   //Other things/decorations
   ball.position.x = -12;
   ball.position.y = -12;
   ball.position.z = -3;
-
 
   poster.position.x = 33;
   poster.position.y = 4;
